@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Fallert, S. and Cabral, J.S." />
+
+
+<title>06: Metabolic scaling</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">06: Metabolic scaling</h1>
+<h4 class="author">Fallert, S. and Cabral, J.S.</h4>
+
+
+
+<p>The temperature of the environment where a species lives (and their
+bodymass) can have a large impact on their metabolism and in consequence
+also on different processes such as growth, reproduction and mortality.
+To include this effect, <code>metaRange</code> offers the option to use
+metabolic scaling based on the “metabolic theory of ecology” described
+by Brown et al. (2004) [Ref: 1] in the following form: <span class="math display">\[{parameter = normalization\_constant \cdot
+mass^{scaling\_exponent} \cdot e^{\frac{E}{k \cdot
+temperature}}}\]</span> This is implemented in the function
+<code>metabolic_scaling()</code>, which can be used to calculate the
+parameter value for any metabolically influenced process, based on the
+mean individual body mass of a population, a process specific constant
+and the temperature of the environment. It has to be noted that
+different processes have different activation energy values and scaling
+exponents.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Parameter</th>
+<th align="center">Scaling exponent</th>
+<th align="right">Activation energy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">resource usage</td>
+<td align="center">3/4</td>
+<td align="right">-0.65</td>
+</tr>
+<tr class="even">
+<td align="left">reproduction, mortality</td>
+<td align="center">-1/4</td>
+<td align="right">-0.65</td>
+</tr>
+<tr class="odd">
+<td align="left">carrying capacity</td>
+<td align="center">-3/4</td>
+<td align="right">0.65</td>
+</tr>
+</tbody>
+</table>
+<p>Table 1: Common parameter and their associated scaling exponents and
+activation energies. Source: table 4 in Brown, J.H., Sibly, R.M. and
+Kodric-Brown, A. (2012) [Ref: 2]</p>
+<div id="calculating-the-normalization-constant" class="section level2">
+<h2>Calculating the normalization constant</h2>
+<p>In the absence of experimentally measured values for the
+normalization constant, <code>metaRange</code> offers the function
+<code>calculate_normalization_constant()</code> to calculate the
+normalization constant based on an estimated value for the parameter
+under a reference temperature.</p>
+</div>
+<div id="example" class="section level1">
+<h1>Example</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(metaRange)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">set_verbosity</span>(<span class="dv">0</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>raster_file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;ex/elev.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;terra&quot;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rast</span>(raster_file)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">scale</span>(r, <span class="at">center =</span> <span class="cn">FALSE</span>, <span class="at">scale =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fl">273.15</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>precipitation <span class="ot">&lt;-</span> r <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">rep</span>(temperature, <span class="dv">10</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>precipitation <span class="ot">&lt;-</span> <span class="fu">rep</span>(precipitation, <span class="dv">10</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>landscape <span class="ot">&lt;-</span> <span class="fu">sds</span>(temperature, precipitation)</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="fu">names</span>(landscape) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;temperature&quot;</span>, <span class="st">&quot;precipitation&quot;</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">create_simulation</span>(landscape)</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_species</span>(<span class="at">name =</span> <span class="st">&quot;species_1&quot;</span>)</span></code></pre></div>
+<p>Define some basic traits.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_traits</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>    <span class="at">species =</span> <span class="st">&quot;species_1&quot;</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    <span class="at">population_level =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>    <span class="at">temperature_maximum =</span> <span class="dv">300</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>    <span class="at">temperature_optimum =</span> <span class="dv">288</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>    <span class="at">temperature_minimum =</span> <span class="dv">280</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>Add the parameter used in the metabolic scaling as global variables,
+since they are not species specific.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_globals</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>    <span class="st">&quot;E_reproduction_rate&quot;</span> <span class="ot">=</span> <span class="sc">-</span><span class="fl">0.65</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>    <span class="st">&quot;E_carrying_capacity&quot;</span> <span class="ot">=</span> <span class="fl">0.65</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>    <span class="st">&quot;exponent_reproduction_rate&quot;</span> <span class="ot">=</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">/</span> <span class="dv">4</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>    <span class="st">&quot;exponent_carrying_capacity&quot;</span> <span class="ot">=</span> <span class="sc">-</span><span class="dv">3</span> <span class="sc">/</span> <span class="dv">4</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>    <span class="st">&quot;k&quot;</span> <span class="ot">=</span> <span class="fl">8.617333e-05</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>Add traits that are used in the reproduction model including an
+estimate of the reproduction rate and the carrying capacity.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_traits</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>    <span class="at">species =</span> <span class="st">&quot;species_1&quot;</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>    <span class="at">population_level =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>    <span class="st">&quot;abundance&quot;</span> <span class="ot">=</span> <span class="dv">100</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>    <span class="st">&quot;reproduction_rate&quot;</span> <span class="ot">=</span> <span class="fl">0.5</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>    <span class="st">&quot;carrying_capacity&quot;</span> <span class="ot">=</span> <span class="dv">1000</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>    <span class="st">&quot;mass&quot;</span> <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>)</span></code></pre></div>
+<p>Calculate the normalization constant, based on the parameter estimate
+and the optimal temperature of the species. Note that this could also be
+done in a loop over multiple species.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_traits</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>    <span class="at">species =</span> <span class="st">&quot;species_1&quot;</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>    <span class="at">population_level =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>    <span class="st">&quot;reproduction_rate_mte_constant&quot;</span> <span class="ot">=</span> <span class="fu">calculate_normalization_constant</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>        <span class="at">parameter_value =</span> sim<span class="sc">$</span>species_1<span class="sc">$</span>traits[[<span class="st">&quot;reproduction_rate&quot;</span>]][[<span class="dv">1</span>]],</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>        <span class="at">scaling_exponent =</span> sim<span class="sc">$</span>globals[[<span class="st">&quot;exponent_reproduction_rate&quot;</span>]],</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>        <span class="at">mass =</span> sim<span class="sc">$</span>species_1<span class="sc">$</span>traits[[<span class="st">&quot;mass&quot;</span>]][[<span class="dv">1</span>]],</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>        <span class="at">reference_temperature =</span> sim<span class="sc">$</span>species_1<span class="sc">$</span>traits[[<span class="st">&quot;temperature_optimum&quot;</span>]],</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>        <span class="at">E =</span> sim<span class="sc">$</span>globals[[<span class="st">&quot;E_reproduction_rate&quot;</span>]],</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>        <span class="at">k =</span> sim<span class="sc">$</span>globals[[<span class="st">&quot;k&quot;</span>]]</span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>    ),</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>    <span class="st">&quot;carrying_capacity_mte_constant&quot;</span> <span class="ot">=</span> <span class="fu">calculate_normalization_constant</span>(</span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>        <span class="at">parameter_value =</span> sim<span class="sc">$</span>species_1<span class="sc">$</span>traits[[<span class="st">&quot;carrying_capacity&quot;</span>]][[<span class="dv">1</span>]],</span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>        <span class="at">scaling_exponent =</span> sim<span class="sc">$</span>globals[[<span class="st">&quot;exponent_carrying_capacity&quot;</span>]],</span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a>        <span class="at">mass =</span> sim<span class="sc">$</span>species_1<span class="sc">$</span>traits[[<span class="st">&quot;mass&quot;</span>]][[<span class="dv">1</span>]],</span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a>        <span class="at">reference_temperature =</span> sim<span class="sc">$</span>species_1<span class="sc">$</span>traits[[<span class="st">&quot;temperature_optimum&quot;</span>]],</span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a>        <span class="at">E =</span> sim<span class="sc">$</span>globals[[<span class="st">&quot;E_carrying_capacity&quot;</span>]],</span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a>        <span class="at">k =</span> sim<span class="sc">$</span>globals[[<span class="st">&quot;k&quot;</span>]]</span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a>    )</span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a>)</span></code></pre></div>
+<p>Add a process that does the metabolic scaling in each time step.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_process</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>    <span class="at">species =</span> <span class="st">&quot;species_1&quot;</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>    <span class="at">process_name =</span> <span class="st">&quot;mte&quot;</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>    <span class="at">process_fun =</span> <span class="cf">function</span>() {</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>        self<span class="sc">$</span>traits[[<span class="st">&quot;reproduction_rate&quot;</span>]] <span class="ot">&lt;-</span> <span class="fu">metabolic_scaling</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>            <span class="at">normalization_constant =</span> self<span class="sc">$</span>traits[[<span class="st">&quot;reproduction_rate_mte_constant&quot;</span>]],</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>            <span class="at">scaling_exponent =</span> self<span class="sc">$</span>sim<span class="sc">$</span>globals[[<span class="st">&quot;exponent_reproduction_rate&quot;</span>]],</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>            <span class="at">mass =</span> self<span class="sc">$</span>traits[[<span class="st">&quot;mass&quot;</span>]],</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>            <span class="at">temperature =</span> self<span class="sc">$</span>sim<span class="sc">$</span>environment<span class="sc">$</span>current[[<span class="st">&quot;temperature&quot;</span>]],</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>            <span class="at">E =</span> self<span class="sc">$</span>sim<span class="sc">$</span>globals[[<span class="st">&quot;E_reproduction_rate&quot;</span>]],</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>            <span class="at">k =</span> self<span class="sc">$</span>sim<span class="sc">$</span>globals[[<span class="st">&quot;k&quot;</span>]]</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>        )</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>        self<span class="sc">$</span>traits[[<span class="st">&quot;carrying_capacity&quot;</span>]] <span class="ot">&lt;-</span> <span class="fu">metabolic_scaling</span>(</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>            <span class="at">normalization_constant =</span> self<span class="sc">$</span>traits[[<span class="st">&quot;carrying_capacity_mte_constant&quot;</span>]],</span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a>            <span class="at">scaling_exponent =</span> self<span class="sc">$</span>sim<span class="sc">$</span>globals[[<span class="st">&quot;exponent_carrying_capacity&quot;</span>]],</span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>            <span class="at">mass =</span> self<span class="sc">$</span>traits[[<span class="st">&quot;mass&quot;</span>]],</span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>            <span class="at">temperature =</span> self<span class="sc">$</span>sim<span class="sc">$</span>environment<span class="sc">$</span>current[[<span class="st">&quot;temperature&quot;</span>]],</span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a>            <span class="at">E =</span> self<span class="sc">$</span>sim<span class="sc">$</span>globals[[<span class="st">&quot;E_carrying_capacity&quot;</span>]],</span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>            <span class="at">k =</span> self<span class="sc">$</span>sim<span class="sc">$</span>globals[[<span class="st">&quot;k&quot;</span>]]</span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a>        )</span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a>    },</span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a>    <span class="at">execution_priority =</span> <span class="dv">2</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a>)</span></code></pre></div>
+<p>After this point, processes could be added that use the scaled
+parameters (See previous articles / vignettes). Here we just plot the
+scaled parameter instead.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">set_time_layer_mapping</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">begin</span>()</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>plot_cols <span class="ot">&lt;-</span> <span class="fu">hcl.colors</span>(<span class="dv">100</span>, <span class="st">&quot;Purple-Yellow&quot;</span>, <span class="at">rev =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="fu">plot</span>(sim, <span class="st">&quot;species_1&quot;</span>, <span class="st">&quot;reproduction_rate&quot;</span>, <span class="at">col =</span> plot_cols, <span class="at">main =</span> <span class="st">&quot;Reproduction rate&quot;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="fu">plot</span>(sim, <span class="st">&quot;species_1&quot;</span>, <span class="st">&quot;carrying_capacity&quot;</span>, <span class="at">col =</span> plot_cols, <span class="at">main =</span> <span class="st">&quot;Carrying capacity&quot;</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><img src="data:image/png;base64,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" /></p>
+<p>Note that these results show an “everything else equal” scenario,
+where the only variable is the temperature. In a more realistic
+scenario, the suitability of the habitat might also influence the
+reproduction rate and carrying capacity or the mean individual body mass
+might change with the temperature and change the results.</p>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<ol style="list-style-type: decimal">
+<li><p>Brown, J.H., Gillooly, J.F., Allen, A.P., Savage, V.M. and West,
+G.B. (2004). Toward a Metabolic Theory of Ecology. <em>Ecology</em>,
+<strong>85</strong>: 1771-1789. <a href="doi:10.1890/03-9000" class="uri">doi:10.1890/03-9000</a></p></li>
+<li><p>Brown, J.H., Sibly, R.M. and Kodric-Brown, A. (2012).
+Introduction: Metabolism as the Basis for a Theoretical Unification of
+Ecology. In: <em>Metabolic Ecology</em> (eds R.M. Sibly, J.H. Brown and
+A. Kodric-Brown). <a href="doi:10.1002/9781119968535.ch" class="uri">doi:10.1002/9781119968535.ch</a></p></li>
+</ol>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

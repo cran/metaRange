@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Fallert, S. and Cabral, J.S." />
+
+
+<title>04: Dispersal</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">04: Dispersal</h1>
+<h4 class="author">Fallert, S. and Cabral, J.S.</h4>
+
+
+
+<p>Dispersal is a key process in the lifecycle of many species and can
+have a large impact on the population dynamics and the ability of a
+species to survive and adapt to a changing environment.
+<code>metaRange</code> allows the user to simulate dispersal in two
+different ways using the <code>dispersal()</code> function, which are
+described in the following sections.</p>
+<p>Since metaRange is not an individual based model it uses the concept
+of a dispersal kernel to simulate dispersal for each population. If one
+is not familiar with this topics, a good introduction is “Nathan, Klein,
+Robledo-Arnuncio, &amp; Revilla (2012) Dispersal kernels: review” (Ref.
+1).</p>
+<p>To also give a short explanation here: A dispersal kernel is
+basically a matrix that describes how likely it is for an individual of
+a source population to move to its surrounding habitat. Since this is a
+probability distribution, this dispersal kernel can be multiplied with
+each cell of the abundance matrix to get the new abundance of the
+species in each cell after dispersal. In other scientific fields this
+process is known as convolution and is for example often used in a
+similar form in image processing and especially when “blurring” an
+image.</p>
+<p>We can use the function <code>calculate_dispersal_kernel()</code> to
+create such a dispersal kernel. This function creates a matrix that has
+<code>max_dispersal_dist</code> rows and columns on both sides of the
+source cell and expects another function as input that it calls for each
+of those cells with the distance from the source cell as an argument.
+This may sound complicated but the code is very short if we use the
+built-in <code>negative_exponential_function</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>max_dispersal_distance <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>mean_dispersal_distance <span class="ot">=</span> <span class="dv">7</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>dispersal_kernel <span class="ot">=</span> metaRange<span class="sc">::</span><span class="fu">calculate_dispersal_kernel</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="at">max_dispersal_dist =</span> max_dispersal_distance, <span class="co"># units: grid cells</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="at">kfun =</span> metaRange<span class="sc">::</span>negative_exponential_function, <span class="co"># this function calculates the kernel values</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="at">mean_dispersal_dist =</span> mean_dispersal_distance <span class="co"># this is passed to the kfun</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>We can plot the kernel to get a better understanding of what it looks
+like. As you can see in the plot, the dispersal kernel is symmetrical
+around the source cell and the probability of dispersal decreases with
+the distance from the source cell. The sum of all values in the kernel
+is 1, which means that the total abundance of the species is conserved
+during dispersal.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>terra<span class="sc">::</span><span class="fu">plot</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>    terra<span class="sc">::</span><span class="fu">rast</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>        dispersal_kernel,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>        <span class="at">extent =</span> terra<span class="sc">::</span><span class="fu">ext</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>            <span class="sc">-</span>max_dispersal_distance, max_dispersal_distance,</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>            <span class="sc">-</span>max_dispersal_distance, max_dispersal_distance</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>        )</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>    ),</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">&quot;Dispersal probability&quot;</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Figure 1: Example dispersal kernel for a negative exponential function" />
+<div class="figcaption">Figure 1: Example dispersal kernel for a
+negative exponential function</div>
+</div>
+<p>While the assumption of dispersal via such a static kernel is an
+often used simplification (i.e. the same kernel is applied to every
+population), it is not always appropriate. For many species, dispersal
+is not solely random, but directed towards a specific target or
+influenced by other external factors. To allow simulations that include
+this, the <code>dispersal()</code> function gives the user the option to
+supply a third argument, <code>weights</code>, which is used to
+redistribute the individuals within the dispersal kernel. If supplied,
+the weights need to be a matrix of the same dimensions as the
+environment and the values should be in the range of
+<code>[0-1]</code>.</p>
+<p>In this example use <code>calculate_suitability()</code> to create a
+matrix that represent a general habitat suitability and use it as
+weights, which would correspond to an ecological meaning of “individuals
+moving towards a more suitable habitat during dispersal, if they have
+the ability to reach it”.</p>
+<div id="basic-setup" class="section level2">
+<h2>Basic setup</h2>
+<p>First, we load the necessary packages and create an example
+landscape.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(metaRange)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">set_verbosity</span>(<span class="dv">2</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>raster_file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;ex/elev.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;terra&quot;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">rast</span>(raster_file)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">scale</span>(r, <span class="at">center =</span> <span class="cn">FALSE</span>, <span class="at">scale =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fl">273.15</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">rep</span>(temperature, <span class="dv">10</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>landscape <span class="ot">&lt;-</span> <span class="fu">sds</span>(temperature)</span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="fu">names</span>(landscape) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;temperature&quot;</span>)</span></code></pre></div>
+<p>Then we set up the basic simulation with two identical species.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">create_simulation</span>(landscape)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt; number of time steps: 10</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; time step layer mapping: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; added environment</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; class       : SpatRasterDataset </span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; subdatasets : 1 </span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; dimensions  : 90, 95 (nrow, ncol)</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; nlyr        : 10 </span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; resolution  : 0.008333333, 0.008333333  (x, y)</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; extent      : 5.741667, 6.533333, 49.44167, 50.19167  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; coord. ref. : lon/lat WGS 84 (EPSG:4326) </span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; source(s)   : memory </span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt; names       : temperature</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt; created simulation: simulation_210d0fd2</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_species</span>(<span class="st">&quot;species_1&quot;</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt; adding species</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt; Name: species_1</span></span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_species</span>(<span class="st">&quot;species_2&quot;</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt; adding species</span></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt; Name: species_2</span></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_traits</span>(</span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">&quot;species_1&quot;</span>, <span class="st">&quot;species_2&quot;</span>),</span>
+<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a>    <span class="at">abundance =</span> <span class="dv">100</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a>    <span class="at">climate_suitability =</span> <span class="dv">1</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a>    <span class="at">reproduction_rate =</span> <span class="fl">0.3</span>,</span>
+<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a>    <span class="at">carrying_capacity =</span> <span class="dv">1000</span></span>
+<span id="cb4-28"><a href="#cb4-28" tabindex="-1"></a>)</span>
+<span id="cb4-29"><a href="#cb4-29" tabindex="-1"></a><span class="co">#&gt; adding traits:</span></span>
+<span id="cb4-30"><a href="#cb4-30" tabindex="-1"></a><span class="co">#&gt; [1] &quot;abundance&quot;           &quot;climate_suitability&quot; &quot;reproduction_rate&quot;  </span></span>
+<span id="cb4-31"><a href="#cb4-31" tabindex="-1"></a><span class="co">#&gt; [4] &quot;carrying_capacity&quot;</span></span>
+<span id="cb4-32"><a href="#cb4-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-33"><a href="#cb4-33" tabindex="-1"></a><span class="co">#&gt; to species:</span></span>
+<span id="cb4-34"><a href="#cb4-34" tabindex="-1"></a><span class="co">#&gt; [1] &quot;species_1&quot; &quot;species_2&quot;</span></span>
+<span id="cb4-35"><a href="#cb4-35" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-36"><a href="#cb4-36" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_traits</span>(</span>
+<span id="cb4-37"><a href="#cb4-37" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">&quot;species_1&quot;</span>, <span class="st">&quot;species_2&quot;</span>),</span>
+<span id="cb4-38"><a href="#cb4-38" tabindex="-1"></a>    <span class="at">population_level =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb4-39"><a href="#cb4-39" tabindex="-1"></a>    <span class="at">max_temperature =</span> <span class="dv">300</span>,</span>
+<span id="cb4-40"><a href="#cb4-40" tabindex="-1"></a>    <span class="at">optimal_temperature =</span> <span class="dv">288</span>,</span>
+<span id="cb4-41"><a href="#cb4-41" tabindex="-1"></a>    <span class="at">min_temperature =</span> <span class="dv">280</span>,</span>
+<span id="cb4-42"><a href="#cb4-42" tabindex="-1"></a>    <span class="at">dispersal_kernel =</span> <span class="fu">calculate_dispersal_kernel</span>(</span>
+<span id="cb4-43"><a href="#cb4-43" tabindex="-1"></a>        <span class="at">max_dispersal_dist =</span> <span class="dv">7</span>,</span>
+<span id="cb4-44"><a href="#cb4-44" tabindex="-1"></a>        <span class="at">kfun =</span> negative_exponential_function,</span>
+<span id="cb4-45"><a href="#cb4-45" tabindex="-1"></a>        <span class="at">mean_dispersal_dist =</span> <span class="dv">4</span></span>
+<span id="cb4-46"><a href="#cb4-46" tabindex="-1"></a>    )</span>
+<span id="cb4-47"><a href="#cb4-47" tabindex="-1"></a>)</span>
+<span id="cb4-48"><a href="#cb4-48" tabindex="-1"></a><span class="co">#&gt; adding traits:</span></span>
+<span id="cb4-49"><a href="#cb4-49" tabindex="-1"></a><span class="co">#&gt; [1] &quot;max_temperature&quot;     &quot;optimal_temperature&quot; &quot;min_temperature&quot;    </span></span>
+<span id="cb4-50"><a href="#cb4-50" tabindex="-1"></a><span class="co">#&gt; [4] &quot;dispersal_kernel&quot;</span></span>
+<span id="cb4-51"><a href="#cb4-51" tabindex="-1"></a><span class="co">#&gt; to species:</span></span>
+<span id="cb4-52"><a href="#cb4-52" tabindex="-1"></a><span class="co">#&gt; [1] &quot;species_1&quot; &quot;species_2&quot;</span></span>
+<span id="cb4-53"><a href="#cb4-53" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-54"><a href="#cb4-54" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_process</span>(</span>
+<span id="cb4-55"><a href="#cb4-55" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">&quot;species_1&quot;</span>, <span class="st">&quot;species_2&quot;</span>),</span>
+<span id="cb4-56"><a href="#cb4-56" tabindex="-1"></a>    <span class="at">process_name =</span> <span class="st">&quot;calculate_suitability&quot;</span>,</span>
+<span id="cb4-57"><a href="#cb4-57" tabindex="-1"></a>    <span class="at">process_fun =</span> <span class="cf">function</span>() {</span>
+<span id="cb4-58"><a href="#cb4-58" tabindex="-1"></a>        self<span class="sc">$</span>traits<span class="sc">$</span>climate_suitability <span class="ot">&lt;-</span></span>
+<span id="cb4-59"><a href="#cb4-59" tabindex="-1"></a>            <span class="fu">calculate_suitability</span>(</span>
+<span id="cb4-60"><a href="#cb4-60" tabindex="-1"></a>                self<span class="sc">$</span>traits<span class="sc">$</span>max_temperature,</span>
+<span id="cb4-61"><a href="#cb4-61" tabindex="-1"></a>                self<span class="sc">$</span>traits<span class="sc">$</span>optimal_temperature,</span>
+<span id="cb4-62"><a href="#cb4-62" tabindex="-1"></a>                self<span class="sc">$</span>traits<span class="sc">$</span>min_temperature,</span>
+<span id="cb4-63"><a href="#cb4-63" tabindex="-1"></a>                self<span class="sc">$</span>sim<span class="sc">$</span>environment<span class="sc">$</span>current<span class="sc">$</span>temperature</span>
+<span id="cb4-64"><a href="#cb4-64" tabindex="-1"></a>            )</span>
+<span id="cb4-65"><a href="#cb4-65" tabindex="-1"></a>    },</span>
+<span id="cb4-66"><a href="#cb4-66" tabindex="-1"></a>    <span class="at">execution_priority =</span> <span class="dv">1</span></span>
+<span id="cb4-67"><a href="#cb4-67" tabindex="-1"></a>)</span>
+<span id="cb4-68"><a href="#cb4-68" tabindex="-1"></a><span class="co">#&gt; adding process: calculate_suitability</span></span>
+<span id="cb4-69"><a href="#cb4-69" tabindex="-1"></a><span class="co">#&gt; to species:</span></span>
+<span id="cb4-70"><a href="#cb4-70" tabindex="-1"></a><span class="co">#&gt; [1] &quot;species_1&quot; &quot;species_2&quot;</span></span>
+<span id="cb4-71"><a href="#cb4-71" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-72"><a href="#cb4-72" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_process</span>(</span>
+<span id="cb4-73"><a href="#cb4-73" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">&quot;species_1&quot;</span>, <span class="st">&quot;species_2&quot;</span>),</span>
+<span id="cb4-74"><a href="#cb4-74" tabindex="-1"></a>    <span class="at">process_name =</span> <span class="st">&quot;reproduction&quot;</span>,</span>
+<span id="cb4-75"><a href="#cb4-75" tabindex="-1"></a>    <span class="at">process_fun =</span> <span class="cf">function</span>() {</span>
+<span id="cb4-76"><a href="#cb4-76" tabindex="-1"></a>        self<span class="sc">$</span>traits<span class="sc">$</span>abundance <span class="ot">&lt;-</span></span>
+<span id="cb4-77"><a href="#cb4-77" tabindex="-1"></a>            <span class="fu">ricker_reproduction_model</span>(</span>
+<span id="cb4-78"><a href="#cb4-78" tabindex="-1"></a>                self<span class="sc">$</span>traits<span class="sc">$</span>abundance,</span>
+<span id="cb4-79"><a href="#cb4-79" tabindex="-1"></a>                self<span class="sc">$</span>traits<span class="sc">$</span>reproduction_rate <span class="sc">*</span> self<span class="sc">$</span>traits<span class="sc">$</span>climate_suitability,</span>
+<span id="cb4-80"><a href="#cb4-80" tabindex="-1"></a>                self<span class="sc">$</span>traits<span class="sc">$</span>carrying_capacity <span class="sc">*</span> self<span class="sc">$</span>traits<span class="sc">$</span>climate_suitability</span>
+<span id="cb4-81"><a href="#cb4-81" tabindex="-1"></a>            )</span>
+<span id="cb4-82"><a href="#cb4-82" tabindex="-1"></a>    },</span>
+<span id="cb4-83"><a href="#cb4-83" tabindex="-1"></a>    <span class="at">execution_priority =</span> <span class="dv">2</span></span>
+<span id="cb4-84"><a href="#cb4-84" tabindex="-1"></a>)</span>
+<span id="cb4-85"><a href="#cb4-85" tabindex="-1"></a><span class="co">#&gt; adding process: reproduction</span></span>
+<span id="cb4-86"><a href="#cb4-86" tabindex="-1"></a><span class="co">#&gt; to species:</span></span>
+<span id="cb4-87"><a href="#cb4-87" tabindex="-1"></a><span class="co">#&gt; [1] &quot;species_1&quot; &quot;species_2&quot;</span></span>
+<span id="cb4-88"><a href="#cb4-88" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
+<p>Now we add the two methods of dispersal to the two species to
+highlight the difference.</p>
+</div>
+<div id="unweighted-dispersal" class="section level2">
+<h2>Unweighted dispersal</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_process</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>    <span class="at">species =</span> <span class="st">&quot;species_1&quot;</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>    <span class="at">process_name =</span> <span class="st">&quot;dispersal_process&quot;</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>    <span class="at">process_fun =</span> <span class="cf">function</span>() {</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>        self<span class="sc">$</span>traits[[<span class="st">&quot;abundance&quot;</span>]] <span class="ot">&lt;-</span> <span class="fu">dispersal</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>            <span class="at">abundance =</span> self<span class="sc">$</span>traits[[<span class="st">&quot;abundance&quot;</span>]],</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>            <span class="at">dispersal_kernel =</span> self<span class="sc">$</span>traits[[<span class="st">&quot;dispersal_kernel&quot;</span>]]</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>        )</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>    },</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>    <span class="at">execution_priority =</span> <span class="dv">3</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>)</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; adding process: dispersal_process</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; to species:</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; [1] &quot;species_1&quot;</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
+</div>
+<div id="weighted-dispersal" class="section level2">
+<h2>Weighted dispersal</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_process</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>    <span class="at">species =</span> <span class="st">&quot;species_2&quot;</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>    <span class="at">process_name =</span> <span class="st">&quot;dispersal_process&quot;</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>    <span class="at">process_fun =</span> <span class="cf">function</span>() {</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>        self<span class="sc">$</span>traits[[<span class="st">&quot;abundance&quot;</span>]] <span class="ot">&lt;-</span> <span class="fu">dispersal</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>            <span class="at">abundance =</span> self<span class="sc">$</span>traits[[<span class="st">&quot;abundance&quot;</span>]],</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>            <span class="at">dispersal_kernel =</span> self<span class="sc">$</span>traits[[<span class="st">&quot;dispersal_kernel&quot;</span>]],</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>            <span class="at">weights =</span> self<span class="sc">$</span>traits[[<span class="st">&quot;climate_suitability&quot;</span>]]</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>        )</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>    },</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>    <span class="at">execution_priority =</span> <span class="dv">3</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>)</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co">#&gt; adding process: dispersal_process</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co">#&gt; to species:</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co">#&gt; [1] &quot;species_2&quot;</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
+</div>
+<div id="comparison-of-the-results" class="section level2">
+<h2>Comparison of the results</h2>
+<p>To see the effect, we run the simulation for 10 time steps and plot
+the results.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">set_verbosity</span>(<span class="dv">0</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">begin</span>()</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>plot_cols <span class="ot">&lt;-</span> <span class="fu">hcl.colors</span>(<span class="dv">100</span>, <span class="st">&quot;Purple-Yellow&quot;</span>, <span class="at">rev =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="fu">plot</span>(sim, <span class="st">&quot;species_1&quot;</span>, <span class="st">&quot;abundance&quot;</span>, <span class="at">col =</span> plot_cols)</span></code></pre></div>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Figure 2: Resulting abundance of species 1 (with unweighted dispersal) after 10 time steps." />
+<div class="figcaption">Figure 2: Resulting abundance of species 1 (with
+unweighted dispersal) after 10 time steps.</div>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">plot</span>(sim, <span class="st">&quot;species_2&quot;</span>, <span class="st">&quot;abundance&quot;</span>, <span class="at">col =</span> plot_cols)</span></code></pre></div>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Figure 3: Resulting abundance of species 2 (with weighted dispersal) after 10 time steps." />
+<div class="figcaption">Figure 3: Resulting abundance of species 2 (with
+weighted dispersal) after 10 time steps.</div>
+</div>
+<p>Note how the plot for species two is less “blurry” and the different
+scales of the two plots. While the first species looses individuals by
+dispersing into unsuitable habitat, the second species can keep a much
+larger population size, by moving towards more suitable habitat during
+dispersal.</p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<ol style="list-style-type: decimal">
+<li>Nathan, R., Klein, E., Robledo-Arnuncio, J.J. and Revilla, E. (2012)
+Dispersal kernels: review. in: Dispersal Ecology and Evolution
+pp. 187–210. (eds J. Clobert, M. Baguette, T.G. Benton and J.M.
+Bullock), Oxford, UK: Oxford Academic, 2013. <a href="doi:10.1093/acprof:oso/9780199608898.003.0015" class="uri">doi:10.1093/acprof:oso/9780199608898.003.0015</a></li>
+</ol>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

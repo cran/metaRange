@@ -417,7 +417,7 @@ relation to the quality of the habitat each population occupies.</p>
 <p>To start, we need to load the package and its dependencies.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(metaRange)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co">#&gt; metaRange version: 1.0.0</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co">#&gt; metaRange version: 1.0.1</span></span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt; terra 1.7.55</span></span></code></pre></div>
 </details>
@@ -737,76 +737,76 @@ it can be executed via the <code>begin()</code> method.</p>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co">#&gt; start of time step: 1</span></span>
 <span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co">#&gt; |- species_1 : reproduction</span></span>
 <span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean abundance: 84.1732579542268&quot;</span></span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co">#&gt; |---- 0.00058 secs</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co">#&gt; |---- 0.00061 secs</span></span>
 <span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="co">#&gt; end of time step: 1</span></span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co">#&gt; 0.059 secs remaining (estimate)</span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co">#&gt; 0.063 secs remaining (estimate)</span></span>
 <span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="co">#&gt; 10 % done</span></span>
 <span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co">#&gt; start of time step: 2</span></span>
 <span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co">#&gt; |- species_1 : reproduction</span></span>
 <span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean abundance: 127.598064388471&quot;</span></span>
-<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co">#&gt; |---- 0.00047 secs</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co">#&gt; |---- 5e-04 secs</span></span>
 <span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co">#&gt; end of time step: 2</span></span>
-<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co">#&gt; 0.08 secs remaining (estimate)</span></span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co">#&gt; 0.086 secs remaining (estimate)</span></span>
 <span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co">#&gt; 20 % done</span></span>
 <span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co">#&gt; start of time step: 3</span></span>
 <span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co">#&gt; |- species_1 : reproduction</span></span>
 <span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean abundance: 185.433176212344&quot;</span></span>
-<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt; |---- 0.00043 secs</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt; |---- 0.00041 secs</span></span>
 <span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="co">#&gt; end of time step: 3</span></span>
-<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="co">#&gt; 0.034 secs remaining (estimate)</span></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="co">#&gt; 0.036 secs remaining (estimate)</span></span>
 <span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a><span class="co">#&gt; 30 % done</span></span>
 <span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a><span class="co">#&gt; start of time step: 4</span></span>
 <span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="co">#&gt; |- species_1 : reproduction</span></span>
 <span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean abundance: 254.974925085775&quot;</span></span>
-<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a><span class="co">#&gt; |---- 0.00042 secs</span></span>
+<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a><span class="co">#&gt; |---- 0.00051 secs</span></span>
 <span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="co">#&gt; end of time step: 4</span></span>
-<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="co">#&gt; 0.03 secs remaining (estimate)</span></span>
+<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="co">#&gt; 0.035 secs remaining (estimate)</span></span>
 <span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a><span class="co">#&gt; 40 % done</span></span>
 <span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a><span class="co">#&gt; start of time step: 5</span></span>
 <span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a><span class="co">#&gt; |- species_1 : reproduction</span></span>
 <span id="cb13-34"><a href="#cb13-34" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean abundance: 328.335965177599&quot;</span></span>
-<span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a><span class="co">#&gt; |---- 0.00047 secs</span></span>
+<span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a><span class="co">#&gt; |---- 0.00045 secs</span></span>
 <span id="cb13-36"><a href="#cb13-36" tabindex="-1"></a><span class="co">#&gt; end of time step: 5</span></span>
-<span id="cb13-37"><a href="#cb13-37" tabindex="-1"></a><span class="co">#&gt; 0.045 secs remaining (estimate)</span></span>
+<span id="cb13-37"><a href="#cb13-37" tabindex="-1"></a><span class="co">#&gt; 0.044 secs remaining (estimate)</span></span>
 <span id="cb13-38"><a href="#cb13-38" tabindex="-1"></a><span class="co">#&gt; 50 % done</span></span>
 <span id="cb13-39"><a href="#cb13-39" tabindex="-1"></a><span class="co">#&gt; start of time step: 6</span></span>
 <span id="cb13-40"><a href="#cb13-40" tabindex="-1"></a><span class="co">#&gt; |- species_1 : reproduction</span></span>
 <span id="cb13-41"><a href="#cb13-41" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean abundance: 394.79908318955&quot;</span></span>
-<span id="cb13-42"><a href="#cb13-42" tabindex="-1"></a><span class="co">#&gt; |---- 0.00043 secs</span></span>
+<span id="cb13-42"><a href="#cb13-42" tabindex="-1"></a><span class="co">#&gt; |---- 5e-04 secs</span></span>
 <span id="cb13-43"><a href="#cb13-43" tabindex="-1"></a><span class="co">#&gt; end of time step: 6</span></span>
-<span id="cb13-44"><a href="#cb13-44" tabindex="-1"></a><span class="co">#&gt; 0.02 secs remaining (estimate)</span></span>
+<span id="cb13-44"><a href="#cb13-44" tabindex="-1"></a><span class="co">#&gt; 0.023 secs remaining (estimate)</span></span>
 <span id="cb13-45"><a href="#cb13-45" tabindex="-1"></a><span class="co">#&gt; 60 % done</span></span>
 <span id="cb13-46"><a href="#cb13-46" tabindex="-1"></a><span class="co">#&gt; start of time step: 7</span></span>
 <span id="cb13-47"><a href="#cb13-47" tabindex="-1"></a><span class="co">#&gt; |- species_1 : reproduction</span></span>
 <span id="cb13-48"><a href="#cb13-48" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean abundance: 446.224976588256&quot;</span></span>
-<span id="cb13-49"><a href="#cb13-49" tabindex="-1"></a><span class="co">#&gt; |---- 0.00045 secs</span></span>
+<span id="cb13-49"><a href="#cb13-49" tabindex="-1"></a><span class="co">#&gt; |---- 4e-04 secs</span></span>
 <span id="cb13-50"><a href="#cb13-50" tabindex="-1"></a><span class="co">#&gt; end of time step: 7</span></span>
-<span id="cb13-51"><a href="#cb13-51" tabindex="-1"></a><span class="co">#&gt; 0.017 secs remaining (estimate)</span></span>
+<span id="cb13-51"><a href="#cb13-51" tabindex="-1"></a><span class="co">#&gt; 0.015 secs remaining (estimate)</span></span>
 <span id="cb13-52"><a href="#cb13-52" tabindex="-1"></a><span class="co">#&gt; 70 % done</span></span>
 <span id="cb13-53"><a href="#cb13-53" tabindex="-1"></a><span class="co">#&gt; start of time step: 8</span></span>
 <span id="cb13-54"><a href="#cb13-54" tabindex="-1"></a><span class="co">#&gt; |- species_1 : reproduction</span></span>
 <span id="cb13-55"><a href="#cb13-55" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean abundance: 480.705159122178&quot;</span></span>
-<span id="cb13-56"><a href="#cb13-56" tabindex="-1"></a><span class="co">#&gt; |---- 0.00043 secs</span></span>
+<span id="cb13-56"><a href="#cb13-56" tabindex="-1"></a><span class="co">#&gt; |---- 0.00048 secs</span></span>
 <span id="cb13-57"><a href="#cb13-57" tabindex="-1"></a><span class="co">#&gt; end of time step: 8</span></span>
-<span id="cb13-58"><a href="#cb13-58" tabindex="-1"></a><span class="co">#&gt; 0.0099 secs remaining (estimate)</span></span>
+<span id="cb13-58"><a href="#cb13-58" tabindex="-1"></a><span class="co">#&gt; 0.011 secs remaining (estimate)</span></span>
 <span id="cb13-59"><a href="#cb13-59" tabindex="-1"></a><span class="co">#&gt; 80 % done</span></span>
 <span id="cb13-60"><a href="#cb13-60" tabindex="-1"></a><span class="co">#&gt; start of time step: 9</span></span>
 <span id="cb13-61"><a href="#cb13-61" tabindex="-1"></a><span class="co">#&gt; |- species_1 : reproduction</span></span>
 <span id="cb13-62"><a href="#cb13-62" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean abundance: 501.356439544315&quot;</span></span>
-<span id="cb13-63"><a href="#cb13-63" tabindex="-1"></a><span class="co">#&gt; |---- 0.00043 secs</span></span>
+<span id="cb13-63"><a href="#cb13-63" tabindex="-1"></a><span class="co">#&gt; |---- 0.00042 secs</span></span>
 <span id="cb13-64"><a href="#cb13-64" tabindex="-1"></a><span class="co">#&gt; end of time step: 9</span></span>
-<span id="cb13-65"><a href="#cb13-65" tabindex="-1"></a><span class="co">#&gt; 0.0049 secs remaining (estimate)</span></span>
+<span id="cb13-65"><a href="#cb13-65" tabindex="-1"></a><span class="co">#&gt; 0.0052 secs remaining (estimate)</span></span>
 <span id="cb13-66"><a href="#cb13-66" tabindex="-1"></a><span class="co">#&gt; 90 % done</span></span>
 <span id="cb13-67"><a href="#cb13-67" tabindex="-1"></a><span class="co">#&gt; start of time step: 10</span></span>
 <span id="cb13-68"><a href="#cb13-68" tabindex="-1"></a><span class="co">#&gt; |- species_1 : reproduction</span></span>
 <span id="cb13-69"><a href="#cb13-69" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mean abundance: 512.803082103058&quot;</span></span>
-<span id="cb13-70"><a href="#cb13-70" tabindex="-1"></a><span class="co">#&gt; |---- 0.00054 secs</span></span>
+<span id="cb13-70"><a href="#cb13-70" tabindex="-1"></a><span class="co">#&gt; |---- 0.00051 secs</span></span>
 <span id="cb13-71"><a href="#cb13-71" tabindex="-1"></a><span class="co">#&gt; end of time step: 10</span></span>
 <span id="cb13-72"><a href="#cb13-72" tabindex="-1"></a><span class="co">#&gt; 0 secs remaining (estimate)</span></span>
 <span id="cb13-73"><a href="#cb13-73" tabindex="-1"></a><span class="co">#&gt; 100 % done</span></span>
 <span id="cb13-74"><a href="#cb13-74" tabindex="-1"></a><span class="co">#&gt; Simulation: &#39;example_simulation&#39; finished</span></span>
 <span id="cb13-75"><a href="#cb13-75" tabindex="-1"></a><span class="co">#&gt; Exiting the Simulation</span></span>
-<span id="cb13-76"><a href="#cb13-76" tabindex="-1"></a><span class="co">#&gt; Runtime: 0.066 secs</span></span></code></pre></div>
+<span id="cb13-76"><a href="#cb13-76" tabindex="-1"></a><span class="co">#&gt; Runtime: 0.069 secs</span></span></code></pre></div>
 </details>
 </div>
 <div id="plotting-the-results" class="section level1">

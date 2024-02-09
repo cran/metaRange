@@ -1,7 +1,7 @@
 Package: metaRange
 Title: Framework to Build Mechanistic and Metabolic Constrained Species
         Distribution Models
-Version: 1.0.1
+Version: 1.1.4
 Authors@R: 
     c(person(given = "Stefan",
              family = "Fallert",
@@ -57,7 +57,7 @@ Encoding: UTF-8
 RoxygenNote: 7.2.3
 LinkingTo: Rcpp, RcppArmadillo
 NeedsCompilation: yes
-Packaged: 2023-12-02 12:40:49 UTC; srfall
+Packaged: 2024-02-09 11:51:34 UTC; srfall
 Author: Stefan Fallert [aut, cre, cph]
     (<https://orcid.org/0000-0002-9939-4219>),
   Lea Li [aut, cph] (Implemented the first version of the metabolic
@@ -69,4 +69,4 @@ Author: Stefan Fallert [aut, cre, cph]
   Deutsche Bundesstiftung Umwelt (DBU) [fnd]
 Maintainer: Stefan Fallert <srfallert@gmail.com>
 Repository: CRAN
-Date/Publication: 2023-12-05 15:20:08 UTC
+Date/Publication: 2024-02-09 12:20:04 UTC

@@ -32,10 +32,7 @@ sim <- create_simulation(
 )
 
 ## ----add_species--------------------------------------------------------------
-species_to_add <- c("species_1", "species_2")
-for (species in species_to_add) {
-    sim$add_species(name = species)
-}
+sim$add_species(c("species_1", "species_2"))
 
 ## ----species_names------------------------------------------------------------
 sim$species_names()
@@ -44,15 +41,27 @@ sim$species_names()
 sim$add_traits(
     species = c("species_1", "species_2"),
     population_level = TRUE,
-    abundance = 100
+    abundance = 200 * sim$environment$current[["habitat_quality"]]
+)
+
+## ----initAbundance, fig.cap = "Figure 2: The initial abundance of the species."----
+# define a nice color palette
+plot_cols <- hcl.colors(100, "BluYl", rev = TRUE)
+plot(
+    sim,
+    obj = "species_1",
+    name = "abundance",
+    main = "Initial abundance",
+    col = plot_cols
 )
 
 ## ----add_trait_2--------------------------------------------------------------
 sim$add_traits(
     species = sim$species_names(),
     population_level = TRUE,
-    reproduction_rate = 0.5,
-    carrying_capacity = 1000
+    reproduction_rate = 1.5,
+    carrying_capacity = 1000,
+    allee_threshold = 150
 )
 
 ## ----Reproduction-------------------------------------------------------------
@@ -78,10 +87,11 @@ sim$add_process(
     process_name = "reproduction",
     process_fun = function() {
         self$traits$abundance <-
-            ricker_reproduction_model(
+            ricker_allee_reproduction_model(
                 self$traits$abundance,
-                self$traits$reproduction_rate * self$sim$environment$current$habitat_quality,
-                self$traits$carrying_capacity
+                self$traits$reproduction_rate,
+                self$traits$carrying_capacity * self$sim$environment$current$habitat_quality,
+                self$traits$allee_threshold
             )
         print(
             paste0(self$name, " mean abundance: ", mean(self$traits$abundance))
@@ -94,9 +104,7 @@ sim$add_process(
 set_verbosity(0)
 sim$begin()
 
-## ----resA, fig.cap = "Figure 2: The resulting abundance distribution of species 1 after 10 simulation time steps."----
-# define a nice color palette
-plot_cols <- hcl.colors(100, "BluYl", rev = TRUE)
+## ----resA, fig.cap = "Figure 3: The resulting abundance distribution of species 1 after 10 simulation time steps."----
 plot(
     sim,
     obj = "species_1",
@@ -105,7 +113,7 @@ plot(
     col = plot_cols
 )
 
-## ----resB, fig.cap = "Figure 3: The resulting abundance distribution of species 2 after 10 simulation time steps."----
+## ----resB, fig.cap = "Figure 4: The resulting abundance distribution of species 2 after 10 simulation time steps."----
 plot(
     sim,
     obj = "species_2",

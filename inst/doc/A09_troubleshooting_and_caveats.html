@@ -416,7 +416,7 @@ get the following output:</p>
 <span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a></span>
 <span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_species</span>(<span class="at">name =</span> <span class="st">&quot;species_1&quot;</span>)</span>
 <span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="co">#&gt; adding species</span></span>
-<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a><span class="co">#&gt; Name: species_1</span></span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a><span class="co">#&gt; name: species_1</span></span>
 <span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_traits</span>(</span>
 <span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a>    <span class="at">species =</span> <span class="st">&quot;species_1&quot;</span>,</span>
 <span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a>    <span class="at">population_level =</span> <span class="cn">TRUE</span>,</span>
@@ -488,7 +488,7 @@ code to inspect the process and find the source of the error.</p>
 <span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a>)</span>
 <span id="cb3-31"><a href="#cb3-31" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">begin</span>()</span></code></pre></div>
 <p>As we are in the browser, we are conceptually inside the
-<code>reproduction</code> process of “species_1”. This mean we can make
+<code>reproduction</code> process of “species_1”. This means we can make
 use of the <code>self</code> keyword to inspect the state of the
 species.</p>
 <p>As a first step, we might want to call <code>ls()</code> to see the
@@ -528,13 +528,13 @@ it is important to choose scales that are appropriate for the species.
 This is especially important to keep in mind when simulating multiple
 species, since they may have different spatial requirements.</p></li>
 <li><p><strong>Evolution and gene flow</strong></p>
-<p>While it is planned for future versions, metaRange does currently not
-support evolution or gene flow.</p></li>
+<p>While it is planned for future versions, metaRange doesn’t
+(currently) support evolution or gene flow.</p></li>
 <li><p><strong>Spatial distortion</strong></p>
 <p>Since metaRange uses raster data to represent the environment, it is
 important to keep in mind that the raster is a 2D representation of a 3D
 world. The larger the geographic extent of the environment, the more
-distorted the raster will be (also depending one the map projection and
+distorted the raster will be (also depending on the map projection and
 the resolution).</p></li>
 </ol>
 </div>

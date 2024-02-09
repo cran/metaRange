@@ -417,17 +417,17 @@ data is not updated, one could use the function as follows:</p>
 </div>
 <div id="global-variables-and-processes" class="section level1">
 <h1>Global variables and processes</h1>
-<p><code>metaRange</code> uses an object orient programming paradigm,
+<p><code>metaRange</code> uses an object oriented programming paradigm,
 this means each species is described by its own biologically relevant
 processes and traits. However, there may be cases where the user wants
 to define a global variable or process that is shared between all
 species, be it to store intermediate results that don’t belong to one
-species or processes to visualize or store output. This can by done by
+species or processes to visualize or store output. This can be done by
 using the <code>add_globals()</code> function for adding global
 variables and the <code>add_process()</code> function with no
 <code>species</code> argument specified, for adding global processes.
-The global variables and processes are accessible through in the
-<code>globals</code>and <code>processes</code> field of the simulation
+The global variables and processes are accessible through the
+<code>globals</code>and <code>processes</code> fields of the simulation
 object itself, respectively. The benefit of using a global process is
 that the <code>self</code> keyword refers to the simulation object
 itself, which allows for easier indexing across multiple species.</p>
@@ -460,7 +460,7 @@ itself, which allows for easier indexing across multiple species.</p>
 <span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>)</span>
 <span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>sim<span class="sc">$</span>processes<span class="sc">$</span>global_process</span>
 <span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt; Process name:  global_process </span></span>
-<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="co">#&gt; PID:  PID-1120039681-global_process </span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="co">#&gt; PID:  PID-1120039681-global_process-simulation_514e20b </span></span>
 <span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co">#&gt; execution_priority:  1 </span></span>
 <span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co">#&gt; execution_environment_label:  simulation_514e20b </span></span>
 <span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="co">#&gt; $fun: function() {</span></span>
@@ -474,7 +474,7 @@ itself, which allows for easier indexing across multiple species.</p>
 <span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co">#&gt;                 )</span></span>
 <span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="co">#&gt;         }</span></span>
 <span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="co">#&gt;     }</span></span>
-<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt; &lt;environment: 0x0000029c0b878070&gt;</span></span></code></pre></div>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt; &lt;environment: 0x000001c9d0d264a0&gt;</span></span></code></pre></div>
 </div>
 <div id="interaction-with-the-priority-queue" class="section level1">
 <h1>Interaction with the priority queue</h1>

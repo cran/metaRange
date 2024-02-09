@@ -349,8 +349,8 @@ complexity is to partition a species into functional subgroups that
 undergo different processes, as for example <em>juveniles</em> who are
 dispersing and looking for a habitat, who then become <em>adults</em>
 who are stationary but have the ability to reproduce and generate the
-next generation of <em>juveniles</em>. The following illustrates how to
-model such a system.</p>
+next generation of <em>juveniles</em>. The following illustrates a
+simple example on how one could model such a system with metaRange.</p>
 <div id="basic-setup" class="section level2">
 <h2>Basic setup</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(metaRange)</span>
@@ -390,7 +390,9 @@ model such a system.</p>
 <div id="processes" class="section level2">
 <h2>Processes</h2>
 <p>Now we add some processes that manage the transition between the age
-classes.</p>
+classes. These processes could of course be of any desired complexity,
+but to make the example easier to follow, we will use simple
+functions:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_process</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>    <span class="at">species =</span> <span class="st">&quot;species_1&quot;</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>    <span class="at">process_name =</span> <span class="st">&quot;reproduction&quot;</span>,</span>
@@ -415,7 +417,7 @@ classes.</p>
 </div>
 <div id="more-processes" class="section level2">
 <h2>More processes</h2>
-<p>And some more for the dispersal and mortality. note that we do not
+<p>And some more for the dispersal and mortality. Note that we do not
 need to add an <code>mortality_of_juveniles</code> process, since their
 mortality is already included in the <code>maturation</code>
 process.</p>

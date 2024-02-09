@@ -343,12 +343,13 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 <p>The temperature of the environment where a species lives (and their
-bodymass) can have a large impact on their metabolism and in consequence
-also on different processes such as growth, reproduction and mortality.
-To include this effect, <code>metaRange</code> offers the option to use
-metabolic scaling based on the “metabolic theory of ecology” described
-by Brown et al. (2004) [Ref: 1] in the following form: <span class="math display">\[{parameter = normalization\_constant \cdot
-mass^{scaling\_exponent} \cdot e^{\frac{E}{k \cdot
+body mass) can have a large impact on their metabolism and in
+consequence also on different processes such as growth, reproduction and
+mortality. To include this effect, <code>metaRange</code> offers the
+option to use metabolic scaling based on the “metabolic theory of
+ecology” described by Brown et al. (2004) [Ref: 1] in the following
+form: <span class="math display">\[{parameter = normalization\_constant
+\cdot mass^{scaling\_exponent} \cdot e^{\frac{E}{k \cdot
 temperature}}}\]</span> This is implemented in the function
 <code>metabolic_scaling()</code>, which can be used to calculate the
 parameter value for any metabolically influenced process, based on the
@@ -485,7 +486,7 @@ done in a loop over multiple species.</p>
 <span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a>    },</span>
 <span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a>    <span class="at">execution_priority =</span> <span class="dv">2</span></span>
 <span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a>)</span></code></pre></div>
-<p>After this point, processes could be added that use the scaled
+<p>After this point, more processes could be added that use the scaled
 parameters (See previous articles / vignettes). Here we just plot the
 scaled parameter instead.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">set_time_layer_mapping</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>

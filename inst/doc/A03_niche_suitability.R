@@ -62,12 +62,12 @@ sim$add_traits(
 sim$add_traits(
     species = "species_1",
     population_level = FALSE,
-    max_temperature = 300, # Kelvin
-    optimal_temperature = 288,
-    min_temperature = 280,
-    max_precipitation = 1000, # mm
-    optimal_precipitation = 700,
-    min_precipitation = 200
+    max_temperature = 300,     # Kelvin
+    optimal_temperature = 288, # Kelvin
+    min_temperature = 280,     # Kelvin
+    max_precipitation = 1000,    # mm
+    optimal_precipitation = 700, # mm
+    min_precipitation = 200      # mm
 )
 sim$add_traits(
     species = "species_2",

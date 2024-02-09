@@ -342,7 +342,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<p>Dispersal is a key process in the lifecycle of many species and can
+<p>Dispersal is a key process in the life cycle of many species and can
 have a large impact on the population dynamics and the ability of a
 species to survive and adapt to a changing environment.
 <code>metaRange</code> allows the user to simulate dispersal in two
@@ -350,7 +350,7 @@ different ways using the <code>dispersal()</code> function, which are
 described in the following sections.</p>
 <p>Since metaRange is not an individual based model it uses the concept
 of a dispersal kernel to simulate dispersal for each population. If one
-is not familiar with this topics, a good introduction is “Nathan, Klein,
+is not familiar with this topic, a good introduction is “Nathan, Klein,
 Robledo-Arnuncio, &amp; Revilla (2012) Dispersal kernels: review” (Ref.
 1).</p>
 <p>To also give a short explanation here: A dispersal kernel is
@@ -408,11 +408,11 @@ redistribute the individuals within the dispersal kernel. If supplied,
 the weights need to be a matrix of the same dimensions as the
 environment and the values should be in the range of
 <code>[0-1]</code>.</p>
-<p>In this example use <code>calculate_suitability()</code> to create a
-matrix that represent a general habitat suitability and use it as
+<p>In this example we use <code>calculate_suitability()</code> to create
+a matrix that represent a general habitat suitability and use it as
 weights, which would correspond to an ecological meaning of “individuals
 moving towards a more suitable habitat during dispersal, if they have
-the ability to reach it”.</p>
+the ability to perceive and reach it”.</p>
 <div id="basic-setup" class="section level2">
 <h2>Basic setup</h2>
 <p>First, we load the necessary packages and create an example
@@ -445,10 +445,10 @@ landscape.</p>
 <span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt; created simulation: simulation_210d0fd2</span></span>
 <span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_species</span>(<span class="st">&quot;species_1&quot;</span>)</span>
 <span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt; adding species</span></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt; Name: species_1</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt; name: species_1</span></span>
 <span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_species</span>(<span class="st">&quot;species_2&quot;</span>)</span>
 <span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt; adding species</span></span>
-<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt; Name: species_2</span></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt; name: species_2</span></span>
 <span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a>sim<span class="sc">$</span><span class="fu">add_traits</span>(</span>
 <span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">&quot;species_1&quot;</span>, <span class="st">&quot;species_2&quot;</span>),</span>
 <span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a>    <span class="at">abundance =</span> <span class="dv">100</span>,</span>
@@ -576,7 +576,7 @@ unweighted dispersal) after 10 time steps.</div>
 weighted dispersal) after 10 time steps.</div>
 </div>
 <p>Note how the plot for species two is less “blurry” and the different
-scales of the two plots. While the first species looses individuals by
+scales of the two plots. While the first species loses individuals by
 dispersing into unsuitable habitat, the second species can keep a much
 larger population size, by moving towards more suitable habitat during
 dispersal.</p>

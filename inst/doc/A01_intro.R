@@ -11,8 +11,8 @@ knitr::include_graphics("../man/figures/example_simulation.svg")
 knitr::include_graphics("../man/figures/simulation_high_level_overview.svg")
 
 ## ----setup--------------------------------------------------------------------
-library(metaRange)
-library(terra)
+library(metaRange) # does the simulation
+library(terra) # handles the raster data processing
 
 ## ----create_landscape, fig.cap = "Figure 3: The habitat quality of the example landscape. Note: higher value = better habitat quality"----
 # find the file
@@ -49,7 +49,7 @@ sim
 summary(sim)
 
 ## ----add_species--------------------------------------------------------------
-sim$add_species(name = "species_1")
+sim$add_species("species_1")
 
 ## ----access_species-----------------------------------------------------------
 sim$species_1
@@ -102,10 +102,10 @@ sim$begin()
 plot_cols <- hcl.colors(100, "BluYl", rev = TRUE)
 plot(
     sim,
-    obj = "species_1",
-    name = "abundance",
-    main = "Species 1: abundance",
-    col = plot_cols
+    obj = "species_1", # name of the species
+    name = "abundance", # name of the trait to plot
+    main = "Species 1: abundance", # optional title
+    col = plot_cols # color palette
 )
 
 ## ----save_results, eval = FALSE-----------------------------------------------
